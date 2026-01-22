@@ -13,10 +13,22 @@
       color: #333;
     }
     .header {
-      background: #1a2634;
+      background: #1a2634 url('images/orig.jpg') center / cover no-repeat;
       color: white;
       text-align: center;
       padding: 60px 20px;
+      position: relative;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 38, 52, 0.6);
+    }
+    .header h1,
+    .header p {
+      position: relative;
+      z-index: 1;
     }
     .header h1 {
       margin: 0;
@@ -38,20 +50,44 @@
       color: #004080;
       margin-bottom: 10px;
     }
+    .contact-wrap {
+      text-align: center;
+      margin: 30px 0;
+    }
     .contact-btn {
-      display: block;
+      display: inline-block;
       width: 200px;
-      margin: 30px auto;
-      background: #ff6a00;
+      background: #004080;
       color: white;
       text-align: center;
       padding: 15px;
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
     }
     .contact-btn:hover {
-      background: #e65c00;
+      background: #002d5c;
+    }
+    .phone-number {
+      display: none;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #004080;
+    }
+    .phone-number.visible {
+      display: block;
+    }
+    .phone-number a {
+      color: #004080;
+      text-decoration: none;
+    }
+    .phone-number a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -82,7 +118,10 @@
       </ul>
     </div>
 
-    <a href="mailto:info@example.com" class="contact-btn">Связаться с нами</a>
+    <div class="contact-wrap">
+      <button type="button" class="contact-btn" onclick="this.nextElementSibling.classList.toggle('visible')">Связаться с нами</button>
+      <p class="phone-number" id="phone"><a href="tel:+79104953496">8(910)-495-34-96</a></p>
+    </div>
 
   </div>
 
