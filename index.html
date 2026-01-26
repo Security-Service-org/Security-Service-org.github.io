@@ -9,8 +9,16 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
+      background: #f4f4f4 url('images/009.jpg') center / cover fixed no-repeat;
       color: #333;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(244, 244, 244, 0.75);
+      z-index: 0;
     }
     .header {
       background: #1a2634 url('images/orig.jpg') center / cover no-repeat;
@@ -18,12 +26,28 @@
       text-align: center;
       padding: 60px 20px;
       position: relative;
+      z-index: 1;
     }
     .header::before {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(26, 38, 52, 0.6);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .header-emblem {
+      height: 100px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
     }
     .header h1,
     .header p {
@@ -33,6 +57,7 @@
     .header h1 {
       margin: 0;
       font-size: 2.4rem;
+      flex: 0 1 auto;
     }
     .header p {
       font-size: 1.1rem;
@@ -42,6 +67,8 @@
       padding: 40px 20px;
       max-width: 900px;
       margin: auto;
+      position: relative;
+      z-index: 1;
     }
     .anchor-nav {
       display: flex;
@@ -49,6 +76,8 @@
       justify-content: center;
       margin-bottom: 40px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
     .anchor-nav a {
       color: #004080;
@@ -65,6 +94,10 @@
     .block {
       margin-bottom: 30px;
       scroll-margin-top: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .block h2 {
       color: #004080;
@@ -73,6 +106,10 @@
     .contact-wrap {
       text-align: center;
       margin: 30px 0;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .contact-btn {
       display: inline-block;
@@ -92,15 +129,17 @@
     .contact-btn:hover {
       background: #002d5c;
     }
+    .contact-btn.hidden {
+      display: none;
+    }
     .phone-number {
       display: none;
-      margin-top: 15px;
       font-size: 1.2rem;
       font-weight: bold;
       color: #004080;
     }
     .phone-number.visible {
-      display: block;
+      display: inline-block;
     }
     .phone-number a {
       color: #004080;
@@ -112,14 +151,23 @@
 
     @media (max-width: 600px) {
       .header h1 { font-size: 1.8rem; }
+      .header-emblem {
+        height: 60px;
+      }
+      .header-content {
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <h1>Добро пожаловать!</h1>
-    <p>Узнайте, как начать работу в Службе Коменданта Московского Кремля</p>
+    <div class="header-content">
+      <img src="images/Герб ФСО.png" alt="Герб ФСО" class="header-emblem">
+      <h1>Служба коменданта Московского Кремля</h1>
+      <img src="images/грб.png" alt="Герб" class="header-emblem">
+    </div>
   </div>
 
   <div class="content">
@@ -152,8 +200,8 @@
     </div>
 
     <div class="contact-wrap">
-      <button type="button" class="contact-btn" onclick="this.nextElementSibling.classList.toggle('visible')">Связаться с нами</button>
-      <p class="phone-number" id="phone"><a href="tel:+79104953496">8(910)-495-34-96</a></p>
+      <button type="button" class="contact-btn" onclick="this.classList.add('hidden'); this.nextElementSibling.classList.add('visible')">Связаться с нами</button>
+      <span class="phone-number" id="phone"><a href="tel:+79104953496">8(910)-495-34-96</a></span>
     </div>
 
     <div class="block">
