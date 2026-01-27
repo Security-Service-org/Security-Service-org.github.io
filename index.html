@@ -136,6 +136,15 @@
     table tr:hover {
       background: #f0f7ff;
     }
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
+    }
+    .table-wrap table {
+      margin: 0;
+      min-width: 280px;
+    }
 
     /* Планшеты */
     @media (max-width: 1024px) {
@@ -158,6 +167,9 @@
 
     /* Мобильные устройства */
     @media (max-width: 768px) {
+      body {
+        font-size: 15px;
+      }
       .header {
         padding: 40px 15px;
       }
@@ -183,6 +195,7 @@
       }
       .content {
         padding: 25px 15px;
+        max-width: 100%;
       }
       .block {
         padding: 18px;
@@ -191,16 +204,36 @@
       .block h2 {
         font-size: 1.5rem;
       }
+      .block h3 {
+        font-size: 1.25rem;
+      }
+      table th,
+      table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+      }
+      .contact-info a {
+        display: inline-block;
+        padding: 8px 0;
+        font-size: 1.1rem;
+      }
     }
 
     /* Маленькие мобильные устройства */
     @media (max-width: 480px) {
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        overflow-x: hidden;
+      }
       .header {
         padding: 30px 10px;
       }
       .header h1 {
         font-size: 1.3rem;
         line-height: 1.2;
+        text-align: center;
       }
       .header-emblem {
         height: 50px;
@@ -209,16 +242,23 @@
         gap: 10px;
       }
       .content {
-        padding: 20px 10px;
+        padding: 16px 12px;
+        box-sizing: border-box;
       }
       .block {
-        padding: 15px;
-        margin-bottom: 15px;
+        padding: 16px;
+        margin-bottom: 20px;
         border-radius: 6px;
+        box-sizing: border-box;
       }
       .block h2 {
         font-size: 1.3rem;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+      }
+      .block h3 {
+        font-size: 1.15rem;
+        margin-top: 16px;
       }
       .block p {
         font-size: 0.95rem;
@@ -230,24 +270,59 @@
       }
       .block li {
         font-size: 0.95rem;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+      }
+      table {
+        font-size: 0.85rem;
+      }
+      table th,
+      table td {
+        padding: 8px 6px;
+      }
+      .table-wrap {
+        margin: 12px -4px;
+        border-radius: 4px;
+      }
+      .contact-info {
+        padding: 10px 0;
+      }
+      .contact-info a {
+        font-size: 1.05rem;
+        word-break: break-all;
       }
     }
 
     /* Очень маленькие экраны */
     @media (max-width: 360px) {
+      .header {
+        padding: 24px 8px;
+      }
       .header h1 {
         font-size: 1.1rem;
       }
       .header-emblem {
         height: 40px;
       }
+      .content {
+        padding: 12px 10px;
+      }
+      .block {
+        padding: 14px;
+      }
       .block h2 {
         font-size: 1.2rem;
+      }
+      .block h3 {
+        font-size: 1.05rem;
       }
       .block p,
       .block li {
         font-size: 0.9rem;
+      }
+      table th,
+      table td {
+        padding: 6px 4px;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -317,61 +392,65 @@
       </ul>
 
       <h3>Требования к поступлению (ЕГЭ)</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Предмет</th>
-            <th>Минимальный балл</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Русский язык</td>
-            <td>36 баллов</td>
-          </tr>
-          <tr>
-            <td>Обществознание</td>
-            <td>42 балла</td>
-          </tr>
-          <tr>
-            <td>История</td>
-            <td>32 балла</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Предмет</th>
+              <th>Минимальный балл</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Русский язык</td>
+              <td>36 баллов</td>
+            </tr>
+            <tr>
+              <td>Обществознание</td>
+              <td>42 балла</td>
+            </tr>
+            <tr>
+              <td>История</td>
+              <td>32 балла</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3>Оценка уровня физической подготовки</h3>
       <p>Для поступления в академию необходимо сдать нормативы по физической подготовке:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Упражнение</th>
-            <th>Отлично</th>
-            <th>Хорошо</th>
-            <th>Удовлетворительно</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Подтягивания</td>
-            <td>11</td>
-            <td>9</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>Бег на 100 метров (сек.)</td>
-            <td>13.6</td>
-            <td>14.2</td>
-            <td>14.8</td>
-          </tr>
-          <tr>
-            <td>Бег на 3000 метров (мин.сек.)</td>
-            <td>12.00</td>
-            <td>12.45</td>
-            <td>14.20</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Упражнение</th>
+              <th>Отлично</th>
+              <th>Хорошо</th>
+              <th>Удовлетворительно</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Подтягивания</td>
+              <td>11</td>
+              <td>9</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>Бег на 100 метров (сек.)</td>
+              <td>13.6</td>
+              <td>14.2</td>
+              <td>14.8</td>
+            </tr>
+            <tr>
+              <td>Бег на 3000 метров (мин.сек.)</td>
+              <td>12.00</td>
+              <td>12.45</td>
+              <td>14.20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3>Условия обучения</h3>
       <p>Академия предоставляет современную материально-техническую базу, опытный преподавательский состав и все необходимые условия для качественного профессионального образования.</p>
