@@ -80,12 +80,51 @@
       font-size: 1.1rem;
       margin-top: 10px;
     }
-    .content {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    .page-layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
       position: relative;
       z-index: 1;
+      gap: 30px;
+    }
+    .sidebar-nav {
+      flex-shrink: 0;
+      width: 200px;
+      padding: 30px 0 30px 20px;
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+    }
+    .sidebar-nav__table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .sidebar-nav__table td {
+      border: 1px solid #e0e0e0;
+      padding: 0;
+    }
+    .sidebar-nav a {
+      display: block;
+      padding: 12px 14px;
+      color: #004080;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-nav a:hover {
+      background: rgba(0, 64, 128, 0.08);
+      color: #0066cc;
+    }
+    .content {
+      flex: 1;
+      padding: 40px 20px 40px 0;
+      min-width: 0;
     }
     .block {
       margin-bottom: 40px;
@@ -308,8 +347,11 @@
       .header-emblem {
         height: 90px;
       }
+      .sidebar-nav {
+        width: 170px;
+      }
       .content {
-        padding: 30px 20px;
+        padding: 30px 20px 30px 0;
       }
       .block {
         padding: 20px;
@@ -343,8 +385,29 @@
         flex: 1 1 auto;
         min-width: 0;
       }
+      .page-layout {
+        flex-direction: column;
+        gap: 0;
+      }
+      .sidebar-nav {
+        width: 100%;
+        padding: 20px 15px;
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        margin: 0 15px 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      }
+      .sidebar-nav a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
       .content {
-        padding: 25px 15px;
+        padding: 0 15px 25px;
         max-width: 100%;
       }
       .block {
@@ -424,44 +487,7 @@
       }
       table {
         font-size: 0.85rem;
-      }
-      table th,
-      table td {
-        padding: 8px 6px;
-      }
-      .table-wrap {
-        margin: 12px -4px;
-        border-radius: 4px;
-      }
-      .contact-info {
-        padding: 10px 0;
-      }
-      .contact-info a {
-        font-size: 1.05rem;
-        word-break: break-all;
-      }
-    }
-
-    /* Очень маленькие экраны */
-    @media (max-width: 360px) {
-      .header {
-        padding: 24px 8px;
-      }
-      .header h1 {
-        font-size: 1.1rem;
-      }
-      .header-emblem {
-        height: 40px;
-      }
-      .content {
-        padding: 12px 10px;
-      }
-      .block {
-        padding: 14px;
-      }
-      .block h2 {
-        font-size: 1.2rem;
-      }
+      }у
       .block h3 {
         font-size: 1.05rem;
       }
@@ -487,10 +513,20 @@
     </div>
   </div>
 
-  <div class="content">
+  <div class="page-layout">
+    <nav class="sidebar-nav" aria-label="Навигация по сайту">
+      <table class="sidebar-nav__table">
+        <tr><td><a href="#skmk">СКМК</a></td></tr>
+        <tr><td><a href="#akademiya">Академия ФСО</a></td></tr>
+        <tr><td><a href="#golicynskij">Голицынский Пограничный</a></td></tr>
+        <tr><td><a href="#kontakty">Контакты</a></td></tr>
+      </table>
+    </nav>
+
+    <div class="content">
 
     <!-- Блок 1: Служба коменданта Московского Кремля -->
-    <div class="block">
+    <div class="block" id="skmk">
       <h2>Служба коменданта Московского Кремля приглашает кандидатов для прохождения военной службы по контракту</h2>
       <p>Служба коменданта Московского Кремля ФСО России — структурное подразделение Федеральной службы охраны Российской Федерации, которое обеспечивает охрану и оборону объектов Кремля, поддержание общественного порядка на его территории и участие в протокольных мероприятиях высшего руководства страны.</p>
       
@@ -545,9 +581,10 @@
     </div>
 
     <!-- Блок 2: Академия Федеральной службы охраны Российской Федерации -->
-    <div class="block">
+    <div class="block" id="akademiya">
       <h2>Академия Федеральной службы охраны Российской Федерации</h2>
       <p>Академия Федеральной службы охраны Российской Федерации — ведущее образовательное учреждение, осуществляющее подготовку специалистов для органов государственной охраны.</p>
+      <p>После завершения обучения выпускники гарантированно поступают на службу в комендатуру Московского Кремля.</p>
       
       <h3>Образовательные программы</h3>
       <p>Академия реализует программы высшего образования, дополнительного профессионального образования и повышения квалификации для сотрудников ФСО России и других силовых структур.</p>
@@ -618,7 +655,7 @@
     </div>
 
     <!-- Блок 3: Голицынский пограничный институт -->
-    <div class="block">
+    <div class="block" id="golicynskij">
       <h2>Голицынский пограничный институт ФСБ России</h2>
       <p>Голицынский пограничный институт Федеральной службы безопасности Российской Федерации — одно из старейших военных учебных заведений страны, осуществляющее подготовку офицеров для пограничной службы.</p>
       
@@ -638,7 +675,7 @@
     </div>
 
     <!-- Блок 4: Контактные данные -->
-    <div class="block contact-info">
+    <div class="block contact-info" id="kontakty">
       <h2>Контактная информация</h2>
       <div class="contact-phones">
         <p><strong>Телефоны:</strong></p>
@@ -648,6 +685,7 @@
       <p class="contact-note"><strong>Для связи по вопросам трудоустройства и поступления</strong></p>
     </div>
 
+    </div>
   </div>
 
 </body>
