@@ -92,6 +92,9 @@
       margin-bottom: 10px;
       font-size: 1.4rem;
     }
+    .block.contact-info {
+      background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)), url('images/9мая.jpeg') center / 55% no-repeat;
+    }
     .contact-info {
       text-align: center;
     }
@@ -107,6 +110,17 @@
     }
     .contact-info a:hover {
       text-decoration: underline;
+    }
+    .contact-info .contact-phones {
+      margin-top: 4.5em;
+      color: #fff;
+      display: inline-block;
+      padding: 16px 24px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+    }
+    .contact-info .contact-phones a {
+      color: #fff;
     }
     table {
       width: 100%;
@@ -490,9 +504,11 @@
     <!-- Блок 4: Контактные данные -->
     <div class="block contact-info">
       <h2>Контактная информация</h2>
-      <p><strong>Телефоны:</strong></p>
-      <p><a href="tel:+79104953496">8(910)-495-34-96</a></p>
-      <p><a href="tel:+74959103524">8(495)-910-35-24</a></p>
+      <div class="contact-phones">
+        <p><strong>Телефоны:</strong></p>
+        <p><a href="tel:+79104953496">8(910)-495-34-96</a></p>
+        <p><a href="tel:+74959103524">8(495)-910-35-24</a></p>
+      </div>
       <p style="margin-top: 30px;"><strong>Для связи по вопросам трудоустройства и поступления</strong></p>
     </div>
 
